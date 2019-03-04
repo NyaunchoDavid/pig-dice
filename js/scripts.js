@@ -2,8 +2,8 @@ var player_1 = '';
 var player_2 = '';
 var p1_score= 0;
 var p2_score = 0;
-var runda = 1;
-var maxRunde = 5;
+var round = 1;
+var maxRound = 5;
 
 var start = document.getElementById('begin');
 var k1 = document.getElementById('k1');
@@ -33,13 +33,13 @@ k2.addEventListener('click', function() {
   k2.disabled = true;
   k1.disabled = false;
   refresh(false, block);
-  if (runda === maxRunde) {
-    var text = getPobednik();
+  if (round === maxRound) {
+    var text = getWinner();
     alert(text);
-    krajIgre();
+    endGame();
     return;
   }
-  runda++;
+  round++;
 });
 
 function refresh(k1, k2){
@@ -50,11 +50,11 @@ function refresh(k1, k2){
     document.getElementById('k_p2').innerHTML = k2;
   }
   document.getElementById('score').innerHTML = 'Total Results '+ p1_score +':'+ p2_score;
-  document.getElementById('runda').innerHTML = runda;
+  document.getElementById('runda').innerHTML = round;
 
 }
 
-function getPobednik(){
+function getWinner(){
   if (p1_score > p2_score) {
     document.getElementById('play1').style.backgroundColor ='lightgreen';
     return "The winner is " + player_1;
@@ -65,13 +65,10 @@ function getPobednik(){
   return "Thats a Draw";
 }
 
-function krajIgre(){
-  runda = 1;
+function endGame(){
+  round = 1;
   p1_score = 0;
   p2_score = 0;
-  document.getElementById('prvi_igrac').style.backgroundColor ='white';
-  document.getElementById('prvi_igrac').style.borderRight = '3px solid gray';
-  document.getElementById('drugi_igrac').style.backgroundColor ='white';
   document.getElementById('start').style.visibility = 'visible';
   document.getElementById('start').style.display = 'block';
   document.getElementById('box').style.visibility = 'hidden';
