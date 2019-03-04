@@ -3,7 +3,7 @@ var player_2 = '';
 var p1_score= 0;
 var p2_score = 0;
 var round = 1;
-var maxRound = 5;
+var maxRound = 6;
 
 var start = document.getElementById('begin');
 var k1 = document.getElementById('k1');
