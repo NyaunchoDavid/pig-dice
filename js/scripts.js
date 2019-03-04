@@ -52,10 +52,8 @@ function refresh(k1, k2){
 
 function getWinner(){
   if (p1_score > p2_score) {
-    document.getElementById('play1').style.backgroundColor ='lightgreen';
     return "The winner is " + player_1;
   } else if (p2_score > p1_score) {
-     document.getElementById('play2').style.backgroundColor ='lightgreen';
      return "The winner is " + player_2;
   }
   return "Thats a Draw";
@@ -65,9 +63,5 @@ function endGame(){
   round = 1;
   p1_score = 0;
   p2_score = 0;
-  document.getElementById('start').style.visibility = 'visible';
-  document.getElementById('start').style.display = 'block';
-  document.getElementById('box').style.visibility = 'hidden';
-  document.getElementById('box').style.display = 'none';
   refresh(0, 0);
 }

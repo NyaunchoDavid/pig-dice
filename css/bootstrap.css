@@ -1,0 +1,29 @@
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #850000;
+  margin-top:30px;
+  padding:42px;
+  height:620px;
+}
+#setter{
+  border:1px solid #800000;
+  width:30%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:66px;
+}
+#play1, #play2{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#start{
+  text-align:center;
+}
+.jumbotron{
+  text-align: center;
+}
