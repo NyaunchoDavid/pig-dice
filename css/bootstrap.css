@@ -3,6 +3,9 @@
   padding:0;
   box-sizing:border-box;;
 }
+body{
+  background-image: url("/home/david/Documents/pigdice/dice.jpeg");
+}
 .container{
   margin-left: auto;
   margin-right: auto;
@@ -10,6 +13,7 @@
   margin-top:30px;
   padding:42px;
   height:620px;
+  background:#cdbb1f;
 }
 #setter{
   border:1px solid #800000;
