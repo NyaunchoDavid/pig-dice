@@ -1,122 +1,80 @@
-var scores, roundScore, activePlayer, gamePlaying, oldDice;
+var player_1 = '';
+var player_2 = '';
+var p1_score= 0;
+var p2_score = 0;
+var runda = 1;
+var maxRunde = 5;
 
-init();
+var start = document.getElementById('begin');
+var k1 = document.getElementById('k1');
+var k2 = document.getElementById('k2');
 
-// when you click roll
-document.querySelector('.btn-roll').addEventListener('click', () => {
-
-    if(gamePlaying){
-
-        // Random Number
-        var dice1 = Math.floor(Math.random() * 6 + 1);
-        var dice2 = Math.floor(Math.random() * 6 + 1);
-
-        // Display result
-        document.getElementById('dice-1').style.display = 'block';
-        document.getElementById('dice-2').style.display = 'block';
-        document.getElementById('dice-1').src = 'dice-' + dice1 + '.png';
-        document.getElementById('dice-2').src = 'dice-' + dice2 + '.png';
-        // update round score if number not 1
-        if(dice1 !== 1 && dice2 !== 1){
-            // add score
-            roundScore += dice1 + dice2;
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;
-        }
-        else{
-            // Next player
-            nextPlayer();
-        }
-
-    }
-
-
+start.addEventListener('click', function () {
+  player_1 = prompt('Player 1 name Please:');
+  player_2 = prompt('Player 2 name Please:');
+  document.getElementById('start').style.visibility = 'hidden';
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('box').style.visibility = 'visible';
+  document.getElementById('box').style.display = 'block';
+  document.getElementById('player_1').innerHTML = player_1;
+  document.getElementById('player_2').innerHTML = player_2;
 });
 
-// When you click hold
-document.querySelector('.btn-hold').addEventListener('click', () => {
-
-    if(gamePlaying){
-
-        // add current score to global score
-        scores[activePlayer] += roundScore;
-
-        // update UI
-        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-
-        var input = document.querySelector('.final-score').value;
-        var winningScore;
-
-        if(input){
-            winningScore = input;
-        }
-        else{
-            winningScore = 100;
-        }
-
-
-        // check if pplayer won
-        if(scores[activePlayer] >= winningScore){
-            document.querySelector('#name-' + activePlayer).textContent = "Winner!";
-            document.getElementById('dice-1').style.display = 'none';
-            document.getElementById('dice-2').style.display = 'none';
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-            gamePlaying = false;
-
-        }
-        else{
-            // Next player
-            nextPlayer();
-        }
-
-    }
-
+k1.addEventListener('click', function() {
+  block = Math.floor(Math.random()*6)+1;
+  p1_score += block ;
+  refresh(block, false);
+  k1.disabled = true;
+  k2.disabled = false;
+});
+k2.addEventListener('click', function() {
+  block = Math.floor(Math.random()*6)+1;
+  p2_score += block ;
+  k2.disabled = true;
+  k1.disabled = false;
+  refresh(false, block);
+  if (runda === maxRunde) {
+    var text = getPobednik();
+    alert(text);
+    krajIgre();
+    return;
+  }
+  runda++;
 });
 
-// Next Player function
-function nextPlayer(){
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-    roundScore = 0;
-
-    document.getElementById('current-0').textContent = '0';
-    document.getElementById('current-1').textContent = '0';
-    // document.querySelector('.player-0-panel').classList.remove('active');
-    // document.querySelector('.player-1-panel').classList.add('active');
-
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
-
-    document.getElementById('dice-1').style.display = 'none';
-    document.getElementById('dice-2').style.display = 'none';
+function refresh(k1, k2){
+  if (k1 === 0 || k1) {
+    document.getElementById('k_p1').innerHTML = k1;
+  }
+  if (k2 === 0 || k2) {
+    document.getElementById('k_p2').innerHTML = k2;
+  }
+  document.getElementById('score').innerHTML = 'Total Results '+ p1_score +':'+ p2_score;
+  document.getElementById('runda').innerHTML = runda;
 
 }
 
-// New Game
-document.querySelector('.btn-new').addEventListener('click', init);
+function getPobednik(){
+  if (p1_score > p2_score) {
+    document.getElementById('play1').style.backgroundColor ='lightgreen';
+    return "The winner is " + player_1;
+  } else if (p2_score > p1_score) {
+     document.getElementById('play2').style.backgroundColor ='lightgreen';
+     return "The winner is " + player_2;
+  }
+  return "Thats a Draw";
+}
 
-// Initialise function
-function init(){
-    scores = [0, 0];
-    activePlayer = 0;
-    roundScore = 0;
-    gamePlaying = true;
-
-    document.getElementById('dice-1').style.display = 'none';
-    document.getElementById('dice-2').style.display = 'none';
-
-    document.getElementById('score-0').textContent = '0';
-    document.getElementById('score-1').textContent = '0';
-    document.getElementById('current-0').textContent = '0';
-    document.getElementById('current-1').textContent = '0';
-
-    document.querySelector('#name-0').textContent = "Player 1";
-    document.querySelector('#name-1').textContent = "Player 2";
-
-    document.querySelector('.player-0-panel').classList.remove('winner');
-    document.querySelector('.player-1-panel').classList.remove('winner');
-    document.querySelector('.player-0-panel').classList.remove('active');
-    document.querySelector('.player-1-panel').classList.remove('active');
-    document.querySelector('.player-0-panel').classList.add('active');
-
-
+function krajIgre(){
+  runda = 1;
+  p1_score = 0;
+  p2_score = 0;
+  document.getElementById('prvi_igrac').style.backgroundColor ='white';
+  document.getElementById('prvi_igrac').style.borderRight = '3px solid gray';
+  document.getElementById('drugi_igrac').style.backgroundColor ='white';
+  document.getElementById('start').style.visibility = 'visible';
+  document.getElementById('start').style.display = 'block';
+  document.getElementById('box').style.visibility = 'hidden';
+  document.getElementById('box').style.display = 'none';
+  refresh(0, 0);
 }
