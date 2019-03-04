@@ -15,6 +15,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom:66px;
+  padding:12px;
+  border-radius:4px;
+  font-size:24px;
 }
 #play1, #play2{
   display:flex;
@@ -26,4 +29,13 @@
 }
 .jumbotron{
   text-align: center;
+}
+#runda{
+  border:2px solid green;
+  width:70px;
+  height:70px;
+  border-radius: 35px;
+  text-align:center;
+  margin-left:14px;
+  font-size:44px;
 }
