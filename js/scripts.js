@@ -12,10 +12,6 @@ var k2 = document.getElementById('k2');
 start.addEventListener('click', function () {
   player_1 = prompt('Player 1 name Please:');
   player_2 = prompt('Player 2 name Please:');
-  document.getElementById('start').style.visibility = 'hidden';
-  document.getElementById('start').style.display = 'none';
-  document.getElementById('box').style.visibility = 'visible';
-  document.getElementById('box').style.display = 'block';
   document.getElementById('player_1').innerHTML = player_1;
   document.getElementById('player_2').innerHTML = player_2;
 });
