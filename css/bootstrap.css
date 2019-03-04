@@ -4,7 +4,7 @@
   box-sizing:border-box;;
 }
 body{
-  background-image: url("/home/david/Documents/pigdice/dice.jpeg");
+  background-image: url("../dice.jpeg");
 }
 .container{
   margin-left: auto;
@@ -14,7 +14,7 @@ body{
   padding:42px;
   height:600px;
   background:#cdbb1f;
-  background-image: url("/home/david/Documents/pigdice/hands.jpeg");
+  background-image: url("../hands.jpeg");
   background-repeat:no-repeat;
   background-size:cover;
   background-position: center;
