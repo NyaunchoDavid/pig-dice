@@ -18,9 +18,10 @@ body{
   background-repeat:no-repeat;
   background-size:cover;
   background-position: center;
+  box-shadow:0px 0px 15px 0px #fff;
 }
 #setter{
-  border:none;
+  border:2px solid green;
   width:30%;
   display:flex;
   justify-content: center;
@@ -29,12 +30,13 @@ body{
   margin-right: auto;
   padding:12px;
   border-radius:4px;
-  font-size:24px;
+  font-size:34px;
 }
 #play1, #play2{
   display:flex;
   justify-content: center;
   align-items: center;
+  color:#fff;
 }
 #start{
   text-align:center;
@@ -43,6 +45,8 @@ body{
 .jumbotron{
   text-align: center;
   height:160px;
+  color:green;
+  box-shadow:0px 0px 8px 0px lightgreen;
 }
 #runda{
   border:2px solid green;
